@@ -9,11 +9,11 @@ The examples demonstrate viewpoint diversity, facial-expression variation, and r
 ## Female — Angry 01
 
 <p align="center">
-  <img src="female_angry_01/001.png" width="150">
-  <img src="female_angry_01/050.png" width="150">
-  <img src="female_angry_01/107.png" width="150">
-  <img src="female_angry_01/170.png" width="150">
-  <img src="female_angry_01/215.png" width="150">
+  <img src="female_angry_01/Female_Angry 01_000.png" width="150">
+  <img src="female_angry_01/Female_Angry 01_049.png" width="150">
+  <img src="female_angry_01/Female_Angry 01_107.png" width="150">
+  <img src="female_angry_01/Female_Angry 01_169.png" width="150">
+  <img src="female_angry_01/Female_Angry 01_214.png" width="150">
 </p>
 
 Representative viewpoints from the **Angry 01** expression preset rendered on the female base character.
@@ -23,11 +23,11 @@ Representative viewpoints from the **Angry 01** expression preset rendered on th
 ## Male — Angry 01
 
 <p align="center">
-  <img src="male_angry_01/001.png" width="150">
-  <img src="male_angry_01/050.png" width="150">
-  <img src="male_angry_01/107.png" width="150">
-  <img src="male_angry_01/170.png" width="150">
-  <img src="male_angry_01/215.png" width="150">
+  <img src="male_angry_01/Male_Angry 01_000.png" width="150">
+  <img src="male_angry_01/Male_Angry 01_049.png" width="150">
+  <img src="male_angry_01/Male_Angry 01_107.png" width="150">
+  <img src="male_angry_01/Male_Angry 01_169.png" width="150">
+  <img src="male_angry_01/Male_Angry 01_214.png" width="150">
 </p>
 
 Representative viewpoints from the **Angry 01** expression preset rendered on the male base character.
