@@ -2,128 +2,200 @@
 
 ## Overview
 
-The synthetic dataset presented in this project was generated using **DAZ Studio** as the primary 3D character creation and rendering platform.
+This document describes the complete workflow used to generate the synthetic facial image dataset presented in this repository.
 
-The objective of the pipeline was to create a reproducible dataset with controllable facial appearance while avoiding copyright restrictions associated with third-party characters.
+The objective of the pipeline is to create a reproducible and controllable facial dataset for experiments in generative vision, representation learning, and deepfake model training.
 
-The complete workflow was designed to generate large numbers of facial images under controlled conditions for subsequent training and evaluation of generative vision models.
-
----
-
-# Base Characters
-
-The dataset was built using the official DAZ Studio base characters:
-
-* **Genesis 8 Male**
-* **Genesis 8 Female**
-
-These standard characters are freely distributed by DAZ 3D and provide a suitable foundation for academic and research-oriented synthetic data generation.
-
-Using official base assets ensures a transparent and reproducible pipeline while avoiding dependence on copyrighted commercial character models.
+Unlike datasets collected from photographs or videos, every image in this dataset is generated inside a virtual 3D environment, allowing individual visual attributes to be systematically controlled.
 
 ---
 
-# Facial Expression Generation
+# Pipeline Overview
 
-Facial expressions were generated using the **V100 Expressions – The Gold Collection** expression package.
+The synthetic data generation workflow consists of the following stages:
 
-This package provides a broad range of facial muscle configurations that can be applied consistently to synthetic characters.
+1. Character selection
+2. Facial expression generation
+3. Camera configuration
+4. Lighting configuration
+5. Rendering
+6. Dataset organization
 
-The generated images include a diverse collection of facial expressions, ranging from neutral poses to more expressive facial movements, enabling richer supervision for generative model training.
+Each stage is independently configurable while remaining fully reproducible.
+
+---
+
+# Character Selection
+
+The dataset was generated using the official DAZ Studio base characters:
+
+- Genesis 8 Female
+- Genesis 8 Male
+
+These characters were intentionally selected because they are official DAZ Studio assets and do not depend on third-party commercial character models.
+
+Using the standard Genesis characters ensures that the complete rendering pipeline can be reproduced without relying on copyrighted celebrity assets or proprietary face models.
+
+The current version of the dataset contains:
+
+- one synthetic female identity
+- one synthetic male identity
+
+Identity remains fixed throughout the rendering process while other visual factors are varied.
+
+---
+
+# Facial Expression Pipeline
+
+Facial diversity is introduced through multiple DAZ Studio expression libraries.
+
+The rendering pipeline incorporates expression presets from several independent collections, including:
+
+- Bee Sting
+- Causam3D
+- Expression Smoother
+- Feelings
+- Godin i3D
+- i3D
+- IT Roy
+- Neikdian
+- Open Wide
+- Tongue Control HD
+- Valery3D
+- V100 Expressions – The Gold Collection
+
+Instead of relying on a single expression pack, multiple libraries are combined to maximize facial variation.
+
+### Expression Statistics
+
+| Character | Expression Presets |
+|-----------|-------------------:|
+| Genesis 8 Female | 210 |
+| Genesis 8 Male | 227 |
+| **Total** | **437** |
+
+These expression presets cover a broad spectrum of facial configurations, including:
+
+- neutral expressions;
+- smiling;
+- anger;
+- sadness;
+- surprise;
+- fear;
+- eyebrow movements;
+- eye movements;
+- mouth opening;
+- wide-open mouth;
+- visible upper teeth;
+- visible lower teeth;
+- tongue movements;
+- asymmetric expressions;
+- exaggerated facial expressions.
+
+Using multiple expression libraries substantially increases facial diversity while preserving identity consistency.
 
 ---
 
 # Camera Configuration
 
-To improve viewpoint diversity, images were rendered from multiple virtual camera positions.
+To improve viewpoint diversity, virtual cameras were positioned around the synthetic character.
 
-The rendering pipeline includes:
+The rendered dataset includes:
 
-* frontal views;
-* left and right profile views;
-* low-angle views;
-* high-angle views;
-* intermediate viewpoints;
-* combinations of yaw, pitch, and roll rotations.
+- frontal view;
+- left profile;
+- right profile;
+- three-quarter view;
+- high-angle view;
+- low-angle view;
+- combinations of yaw, pitch, and roll rotations.
 
-This controlled camera setup provides significantly greater viewpoint coverage than can typically be obtained from naturally collected photographs.
+The objective is to improve viewpoint coverage under controlled conditions.
 
 ---
 
 # Lighting Configuration
 
-Multiple virtual lighting conditions were incorporated into the rendering process.
+Multiple lighting configurations were used throughout the rendering process.
 
-Lighting variations include changes in:
+Lighting parameters include controlled variation of:
 
-* light direction;
-* light intensity;
-* illumination angle;
-* shadow distribution.
+- illumination direction;
+- light intensity;
+- shadow placement;
+- scene brightness.
 
-The objective is to expose the learning algorithm to a wider range of appearance conditions while maintaining complete control over the rendering environment.
+Unlike naturally collected datasets, lighting conditions are fully reproducible.
 
 ---
 
-# Image Resolution
+# Rendering Configuration
 
-All rendered facial images were generated at a resolution of:
+All facial images were rendered at:
 
 **1024 × 1024 pixels**
 
-The chosen resolution provides sufficient facial detail for training high-quality generative models while remaining computationally practical for large-scale experiments.
+A fixed rendering resolution simplifies preprocessing and provides consistent image quality throughout the dataset.
 
 ---
 
-# Motivation for the Pipeline
+# Dataset Composition
 
-Preliminary observations of existing deepfake models revealed several challenging situations in which visual quality often degrades.
+The current dataset contains:
 
-These situations include:
+| Property | Value |
+|----------|------:|
+| Total Images | 100,000 |
+| Female Images | 50,000 |
+| Male Images | 50,000 |
+| Female Identity | 1 |
+| Male Identity | 1 |
+| Expression Presets | 437 |
+| Resolution | 1024 × 1024 |
 
-* extreme head rotations;
-* low-angle and high-angle views;
-* uncommon facial expressions;
-* visible teeth;
-* tongue visibility;
-* partial facial occlusions;
-* challenging illumination conditions.
-
-These observations motivated the creation of a synthetic dataset capable of systematically generating such conditions under controlled settings.
-
----
-
-# Current Dataset
-
-The first version of the dataset contains:
-
-* **100,000 rendered facial images**
-* **50,000 images of one synthetic female identity**
-* **50,000 images of one synthetic male identity**
-
-Both identities were rendered using the same generation pipeline while varying facial expressions, camera viewpoints, and lighting conditions.
-
-This controlled configuration serves as the initial stage of a broader research roadmap investigating synthetic identity diversity.
+The rendering pipeline intentionally begins with two fixed identities to establish a controlled experimental baseline before scaling to larger synthetic identity sets.
 
 ---
 
-# Future Extensions
+# Design Motivation
 
-The current pipeline has been designed for scalability.
+The pipeline was designed after observing several common failure cases in existing deepfake systems.
 
-Future versions of the dataset will extend the rendering process by incorporating:
+Particular attention was given to generating facial images that include:
 
-* additional synthetic identities;
-* more extensive facial expression libraries;
-* facial occlusions (e.g., glasses, masks, hands, and hair);
-* broader illumination environments;
-* additional rendering configurations;
-* larger-scale synthetic datasets for representation learning and generalization studies.
+- high-angle viewpoints;
+- low-angle viewpoints;
+- large head rotations;
+- diverse facial expressions;
+- open-mouth configurations;
+- visible teeth;
+- tongue visibility;
+- controlled illumination conditions.
+
+These visual conditions are difficult to obtain systematically from naturally collected datasets but can be reproduced consistently within a synthetic rendering environment.
+
+---
+
+# Pipeline Characteristics
+
+The proposed generation pipeline provides several important advantages:
+
+- fully reproducible rendering;
+- controllable facial appearance;
+- consistent synthetic identities;
+- large facial expression diversity;
+- systematic camera placement;
+- controlled illumination;
+- scalable dataset generation.
+
+These characteristics make the pipeline suitable for controlled experiments in generative vision and representation learning.
 
 ---
 
 # Summary
 
-DAZ Studio provides a flexible and reproducible environment for generating synthetic facial data with precise control over semantic attributes.
+The DAZ Studio pipeline establishes a reproducible framework for generating controllable synthetic human faces.
 
-The resulting pipeline forms the foundation of the synthetic dataset used throughout this project and supports systematic experimentation that would be difficult to reproduce using unconstrained real-world image collections.
+The current implementation contains 100,000 rendered images generated from two synthetic identities using 437 facial expression presets, multiple camera viewpoints, controlled lighting configurations, and a fixed rendering resolution of 1024 × 1024 pixels.
+
+Future versions of the pipeline will extend the number of synthetic identities while preserving the same generation methodology.
